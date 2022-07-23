@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/albumsFragment">
+
+    <fragment
+        android:id="@+id/albumsFragment"
+        android:name="com.app.albumsapplication.ui.AlbumsFragment"
+        android:label="Albums"
+        tools:layout="@layout/fragment_albums" >
+        <action
+            android:id="@+id/action_albumsFragment_to_photosFragment"
+            app:destination="@id/photosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photosFragment"
+        android:name="com.app.albumsapplication.ui.PhotosFragment"
+        android:label="Photos"
+        tools:layout="@layout/fragment_photos" >
+        <action
+            android:id="@+id/action_photosFragment_to_detailPhotoFragment"
+            app:destination="@id/detailPhotoFragment" />
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_photosFragment_to_albumsFragment"
+            app:destination="@id/albumsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailPhotoFragment"
+        android:name="com.app.albumsapplication.ui.DetailPhotoFragment"
+        android:label="Photo"
+        tools:layout="@layout/fragment_detail_photo" >
+        <argument
+            android:name="photoUrl"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_detailPhotoFragment_to_photosFragment"
+            app:destination="@id/photosFragment" />
+    </fragment>
+</navigation>
